@@ -1,4 +1,4 @@
-# Memio's Validator [![Travis CI](https://travis-ci.org/memio/validator.png)](https://travis-ci.org/memio/validator)
+# Memio's Validator [![Travis CI](https://travis-ci.org/memio/validator.png)](https://travis-ci.org/memio/validator) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/e5794d5b-5305-4569-bc9b-caeecf9ae982/mini.png)](https://insight.sensiolabs.com/projects/e5794d5b-5305-4569-bc9b-caeecf9ae982)
 
 A validator library for Memio: allows to define `Constraints` to check if the built
 [Memio models](http://github.com/memio/model) are valid
