@@ -11,7 +11,7 @@ A validator library for Memio: allows to define `Constraints` to check if the bu
 
 Install it using [Composer](https://getcomposer.org/download):
 
-    composer require memio/validator:~1.0@rc
+    composer require memio/validator:~1.0
 
 ## Example
 
