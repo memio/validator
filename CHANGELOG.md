@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.2: Updated dependencies
+
+* added support for PHP 7
+
 ## 1.0.1: Stabilised versions
 
 * updated phpspec to version 2.2.0 stable
