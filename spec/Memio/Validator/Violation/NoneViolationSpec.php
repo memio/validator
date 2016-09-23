@@ -11,13 +11,14 @@
 
 namespace spec\Memio\Validator\Violation;
 
+use Memio\Validator\Violation;
 use PhpSpec\ObjectBehavior;
 
 class NoneViolationSpec extends ObjectBehavior
 {
     function it_is_a_violation()
     {
-        $this->shouldHaveType('Memio\Validator\Violation');
+        $this->shouldHaveType(Violation::class);
     }
 
     function it_never_has_a_message()

@@ -13,25 +13,14 @@ namespace Memio\Validator;
 
 class ConstraintValidator
 {
-    /**
-     * @var array
-     */
-    private $constraints = array();
+    private $constraints = [];
 
-    /**
-     * @param Constraint $constraint
-     */
     public function add(Constraint $constraint)
     {
         $this->constraints[] = $constraint;
     }
 
-    /**
-     * @param mixed $model
-     *
-     * @return ViolationCollection
-     */
-    public function validate($model)
+    public function validate($model) : ViolationCollection
     {
         $violationCollection = new ViolationCollection();
         foreach ($this->constraints as $constraint) {

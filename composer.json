@@ -17,7 +17,7 @@
         "Memio\\Validator\\": "src/Memio/Validator"
     }},
     "require": {
-        "php": "^5.3|^7.0",
+        "php": "^7.0",
         "memio/model": "^1.0"
     },
     "require-dev": {

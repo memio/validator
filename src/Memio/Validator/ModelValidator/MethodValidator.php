@@ -12,60 +12,40 @@
 namespace Memio\Validator\ModelValidator;
 
 use Memio\Model\Method;
-use Memio\Validator\Constraint;
-use Memio\Validator\ConstraintValidator;
-use Memio\Validator\ModelValidator;
-use Memio\Validator\ViolationCollection;
+use Memio\Validator\{
+    Constraint,
+    ConstraintValidator,
+    ModelValidator,
+    ViolationCollection
+};
 
 class MethodValidator implements ModelValidator
 {
-    /**
-     * @var ArgumentValidator
-     */
     private $argumentValidator;
-
-    /**
-     * @var CollectionValidator
-     */
     private $collectionValidator;
-
-    /**
-     * @var ConstraintValidator
-     */
     private $constraintValidator;
 
-    /**
-     * @param ArgumentValidator   $argumentValidator
-     * @param CollectionValidator $collectionValidator
-     */
-    public function __construct(ArgumentValidator $argumentValidator, CollectionValidator $collectionValidator)
-    {
+    public function __construct(
+        ArgumentValidator $argumentValidator,
+        CollectionValidator $collectionValidator
+    ) {
         $this->argumentValidator = $argumentValidator;
         $this->collectionValidator = $collectionValidator;
 
         $this->constraintValidator = new ConstraintValidator();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function add(Constraint $constraint)
     {
         $this->constraintValidator->add($constraint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function supports($model)
+    public function supports($model) : bool
     {
         return $model instanceof Method;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($model)
+    public function validate($model) : ViolationCollection
     {
         if (!$this->supports($model)) {
             return new ViolationCollection();

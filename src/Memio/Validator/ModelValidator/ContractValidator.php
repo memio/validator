@@ -12,32 +12,19 @@
 namespace Memio\Validator\ModelValidator;
 
 use Memio\Model\Contract;
-use Memio\Validator\Constraint;
-use Memio\Validator\ConstraintValidator;
-use Memio\Validator\ModelValidator;
-use Memio\Validator\ViolationCollection;
+use Memio\Validator\{
+    Constraint,
+    ConstraintValidator,
+    ModelValidator,
+    ViolationCollection
+};
 
 class ContractValidator implements ModelValidator
 {
-    /**
-     * @var CollectionValidator
-     */
     private $collectionValidator;
-
-    /**
-     * @var ConstraintValidator
-     */
     private $constraintValidator;
-
-    /**
-     * @var MethodValidator
-     */
     private $methodValidator;
 
-    /**
-     * @param CollectionValidator $collectionValidator
-     * @param MethodValidator     $methodValidator
-     */
     public function __construct(
         CollectionValidator $collectionValidator,
         MethodValidator $methodValidator
@@ -48,26 +35,17 @@ class ContractValidator implements ModelValidator
         $this->constraintValidator = new ConstraintValidator();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function add(Constraint $constraint)
     {
         $this->constraintValidator->add($constraint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function supports($model)
+    public function supports($model) : bool
     {
         return $model instanceof Contract;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($model)
+    public function validate($model) : ViolationCollection
     {
         if (!$this->supports($model)) {
             return new ViolationCollection();

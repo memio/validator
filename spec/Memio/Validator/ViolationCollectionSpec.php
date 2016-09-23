@@ -11,6 +11,7 @@
 
 namespace spec\Memio\Validator;
 
+use Memio\Validator\Exception\InvalidModelException;
 use Memio\Validator\ViolationCollection;
 use Memio\Validator\Violation\NoneViolation;
 use Memio\Validator\Violation\SomeViolation;
@@ -21,16 +22,17 @@ class ViolationCollectionSpec extends ObjectBehavior
     const FIRST_MESSAGE = 'Model is invalid';
     const SECOND_MESSAGE = 'Model is wrong';
 
-    function it_raises_exception_if_it_has_any_violations(SomeViolation $someViolation, SomeViolation $someOtherViolation)
-    {
+    function it_raises_exception_if_it_has_any_violations(
+        SomeViolation $someViolation,
+        SomeViolation $someOtherViolation
+    ) {
         $someViolation->getMessage()->willReturn(self::FIRST_MESSAGE);
         $someOtherViolation->getMessage()->willReturn(self::SECOND_MESSAGE);
 
         $this->add($someViolation);
         $this->add($someOtherViolation);
 
-        $invalidModelException = 'Memio\Validator\Exception\InvalidModelException';
-        $this->shouldThrow($invalidModelException)->duringRaise();
+        $this->shouldThrow(InvalidModelException::class)->duringRaise();
     }
 
     function it_does_not_raise_exception_if_it_has_no_violations()
@@ -48,14 +50,12 @@ class ViolationCollectionSpec extends ObjectBehavior
     function it_can_be_merged_with_other_collections(
         SomeViolation $someViolation,
         ViolationCollection $violationCollection
-    )
-    {
+    ) {
         $someViolation->getMessage()->willReturn(self::FIRST_MESSAGE);
 
         $this->add($someViolation);
         $this->merge($violationCollection);
 
-        $invalidModelException = 'Memio\Validator\Exception\InvalidModelException';
-        $this->shouldThrow($invalidModelException)->duringRaise();
+        $this->shouldThrow(InvalidModelException::class)->duringRaise();
     }
 }

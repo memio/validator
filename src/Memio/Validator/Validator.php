@@ -11,28 +11,19 @@
 
 namespace Memio\Validator;
 
-use Memio\Validator\ModelValidator;
-use Memio\Validator\ViolationCollection;
+use Memio\Validator\Exception\InvalidModelException;
 
 class Validator
 {
-    /**
-     * @var array
-     */
-    private $modelValidators = array();
+    private $modelValidators = [];
 
-    /**
-     * @param ModelValidator $modelValidator
-     */
     public function add(ModelValidator $modelValidator)
     {
         $this->modelValidators[] = $modelValidator;
     }
 
     /**
-     * @param mixed $model
-     *
-     * @throws \Memio\Validator\Exception\InvalidModelException If model is invalid
+     * @throws InvalidModelException If model is invalid
      */
     public function validate($model)
     {

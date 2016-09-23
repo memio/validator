@@ -15,23 +15,14 @@ use Memio\Validator\Violation;
 
 class SomeViolation implements Violation
 {
-    /**
-     * @var string
-     */
     private $message;
 
-    /**
-     * @param string $message
-     */
-    public function __construct($message)
+    public function __construct(string $message)
     {
         $this->message = $message;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getMessage()
+    public function getMessage() : string
     {
         return $this->message;
     }

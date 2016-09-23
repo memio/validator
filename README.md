@@ -24,15 +24,17 @@ the first thing we'll need to do is to write a `Constraint`:
 require __DIR__.'/vendor/autoload.php';
 
 use Memio\Validator\Constraint;
-use Memio\Validator\Violation\NoneViolation;
-use Memio\Validator\Violation\SomeViolation;
+use Memio\Validator\Violation\{
+    NoneViolation,
+    SomeViolation
+};
 
 class ArgumentCannotBeScalar implements Constraint
 {
     public function validate($model)
     {
         $type = $model->getType();
-        if (in_array($type, array('array', 'bool', 'callable', 'double', 'int', 'mixed', 'null', 'resource', 'string'), true)) {
+        if (in_array($type, ['array', 'bool', 'callable', 'double', 'int', 'mixed', 'null', 'resource', 'string'], true)) {
             return new SomeViolation(sprintf('Argument "%s" cannot be scalar', $model->getName()));
         }
 

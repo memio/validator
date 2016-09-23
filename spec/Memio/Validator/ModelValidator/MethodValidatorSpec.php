@@ -11,22 +11,25 @@
 
 namespace spec\Memio\Validator\ModelValidator;
 
+use Memio\Model\Method;
 use Memio\Validator\ViolationCollection;
+use Memio\Validator\ModelValidator;
 use Memio\Validator\ModelValidator\ArgumentValidator;
 use Memio\Validator\ModelValidator\CollectionValidator;
-use Memio\Model\Method;
 use PhpSpec\ObjectBehavior;
 
 class MethodValidatorSpec extends ObjectBehavior
 {
-    function let(ArgumentValidator $argumentValidator, CollectionValidator $collectionValidator)
-    {
+    function let(
+        ArgumentValidator $argumentValidator,
+        CollectionValidator $collectionValidator
+    ) {
         $this->beConstructedWith($argumentValidator, $collectionValidator);
     }
 
     function it_is_a_model_validator()
     {
-        $this->shouldImplement('Memio\Validator\ModelValidator');
+        $this->shouldImplement(ModelValidator::class);
     }
 
     function it_supports_methods(Method $model)
@@ -38,16 +41,19 @@ class MethodValidatorSpec extends ObjectBehavior
         ArgumentValidator $argumentValidator,
         CollectionValidator $collectionValidator,
         Method $model
-    )
-    {
-        $arguments = array();
+    ) {
+        $arguments = [];
         $violationCollection1 = new ViolationCollection();
         $violationCollection2 = new ViolationCollection();
 
         $model->isAbstract()->willReturn(false);
         $model->allArguments()->willReturn($arguments);
-        $collectionValidator->validate($arguments)->willReturn($violationCollection1);
-        $argumentValidator->validate($arguments)->willReturn($violationCollection2);
+        $collectionValidator->validate($arguments)->willReturn(
+            $violationCollection1
+        );
+        $argumentValidator->validate($arguments)->willReturn(
+            $violationCollection2
+        );
 
         $this->validate($model);
     }

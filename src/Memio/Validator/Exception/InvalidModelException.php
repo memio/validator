@@ -16,9 +16,6 @@ namespace Memio\Validator\Exception;
  */
 class InvalidModelException extends \DomainException implements Exception
 {
-    /**
-     * @param array $violations
-     */
     public function __construct(array $violations)
     {
         parent::__construct(implode("\n", $violations));
