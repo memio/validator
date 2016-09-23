@@ -43,8 +43,7 @@ class ContractValidatorSpec extends ObjectBehavior
         MethodValidator $methodValidator,
         Contract $model,
         Method $method
-    )
-    {
+    ) {
         $constants = [];
         $contracts = [];
         $methods = [$method];

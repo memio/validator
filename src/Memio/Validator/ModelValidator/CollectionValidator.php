@@ -11,18 +11,14 @@
 
 namespace Memio\Validator\ModelValidator;
 
-use Memio\Model\{
-    Argument,
-    Constant,
-    Method,
-    Property
-};
-use Memio\Validator\{
-    Constraint,
-    ConstraintValidator,
-    ModelValidator,
-    ViolationCollection
-};
+use Memio\Model\Argument;
+use Memio\Model\Constant;
+use Memio\Model\Method;
+use Memio\Model\Property;
+use Memio\Validator\Constraint;
+use Memio\Validator\ConstraintValidator;
+use Memio\Validator\ModelValidator;
+use Memio\Validator\ViolationCollection;
 
 class CollectionValidator implements ModelValidator
 {
@@ -45,10 +41,10 @@ class CollectionValidator implements ModelValidator
         }
         $firstElement = current($model);
 
-        return (
+        return
             $firstElement instanceof Argument || $firstElement instanceof Constant
             || $firstElement instanceof Method || $firstElement instanceof Property
-        );
+        ;
     }
 
     public function validate($model) : ViolationCollection

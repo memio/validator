@@ -12,7 +12,6 @@
 namespace spec\Memio;
 
 use Memio\Model\Argument;
-use Memio\Model\Method;
 use Memio\Validator\Exception\InvalidModelException;
 use Memio\Validator\ModelValidator;
 use Memio\Validator\ViolationCollection;

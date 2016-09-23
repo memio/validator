@@ -11,17 +11,13 @@
 
 namespace Memio\Validator\ModelValidator;
 
-use Memio\Model\{
-    Contract,
-    File,
-    Object
-};
-use Memio\Validator\{
-    Constraint,
-    ConstraintValidator,
-    ModelValidator,
-    ViolationCollection
-};
+use Memio\Model\Contract;
+use Memio\Model\File;
+use Memio\Model\Object;
+use Memio\Validator\Constraint;
+use Memio\Validator\ConstraintValidator;
+use Memio\Validator\ModelValidator;
+use Memio\Validator\ViolationCollection;
 
 class FileValidator implements ModelValidator
 {

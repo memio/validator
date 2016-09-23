@@ -12,12 +12,10 @@
 namespace Memio\Validator\ModelValidator;
 
 use Memio\Model\Contract;
-use Memio\Validator\{
-    Constraint,
-    ConstraintValidator,
-    ModelValidator,
-    ViolationCollection
-};
+use Memio\Validator\Constraint;
+use Memio\Validator\ConstraintValidator;
+use Memio\Validator\ModelValidator;
+use Memio\Validator\ViolationCollection;
 
 class ContractValidator implements ModelValidator
 {
