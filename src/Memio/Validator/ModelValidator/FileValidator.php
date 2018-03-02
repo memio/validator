@@ -13,7 +13,7 @@ namespace Memio\Validator\ModelValidator;
 
 use Memio\Model\Contract;
 use Memio\Model\File;
-use Memio\Model\Object;
+use Memio\Model\Objekt;
 use Memio\Validator\Constraint;
 use Memio\Validator\ConstraintValidator;
 use Memio\Validator\ModelValidator;
@@ -21,20 +21,9 @@ use Memio\Validator\ViolationCollection;
 
 class FileValidator implements ModelValidator
 {
-    /**
-     * @var ContractValidator
-     */
     private $contractValidator;
-
-    /**
-     * @var ObjectValidator
-     */
     private $objectValidator;
 
-    /**
-     * @param ContractValidator $contractValidator
-     * @param ObjectValidator   $objectValidator
-     */
     public function __construct(
         ContractValidator $contractValidator,
         ObjectValidator $objectValidator
@@ -45,26 +34,17 @@ class FileValidator implements ModelValidator
         $this->constraintValidator = new ConstraintValidator();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function add(Constraint $constraint)
     {
         $this->constraintValidator->add($constraint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function supports($model)
+    public function supports($model): bool
     {
         return $model instanceof File;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($model)
+    public function validate($model): ViolationCollection
     {
         if (!$this->supports($model)) {
             return new ViolationCollection();
@@ -74,7 +54,7 @@ class FileValidator implements ModelValidator
         if ($structure instanceof Contract) {
             $violationCollection->merge($this->contractValidator->validate($structure));
         }
-        if ($structure instanceof Object) {
+        if ($structure instanceof Objekt) {
             $violationCollection->merge($this->objectValidator->validate($structure));
         }
 

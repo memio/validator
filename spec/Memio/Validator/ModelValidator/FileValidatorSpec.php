@@ -11,24 +11,27 @@
 
 namespace spec\Memio\Validator\ModelValidator;
 
-use Memio\Validator\ViolationCollection;
-use Memio\Validator\ModelValidator\ContractValidator;
-use Memio\Validator\ModelValidator\ObjectValidator;
 use Memio\Model\Contract;
 use Memio\Model\File;
-use Memio\Model\Object;
+use Memio\Model\Objekt;
+use Memio\Validator\ModelValidator;
+use Memio\Validator\ModelValidator\ContractValidator;
+use Memio\Validator\ModelValidator\ObjectValidator;
+use Memio\Validator\ViolationCollection;
 use PhpSpec\ObjectBehavior;
 
 class FileValidatorSpec extends ObjectBehavior
 {
-    function let(ContractValidator $contractValidator, ObjectValidator $objectValidator)
-    {
+    function let(
+        ContractValidator $contractValidator,
+        ObjectValidator $objectValidator
+    ) {
         $this->beConstructedWith($contractValidator, $objectValidator);
     }
 
     function it_is_a_model_validator()
     {
-        $this->shouldImplement('Memio\Validator\ModelValidator');
+        $this->shouldImplement(ModelValidator::class);
     }
 
     function it_supports_contracts(File $model)
@@ -40,26 +43,26 @@ class FileValidatorSpec extends ObjectBehavior
         Contract $contract,
         ContractValidator $contractValidator,
         File $model
-    )
-    {
+    ) {
         $violationCollection = new ViolationCollection();
 
         $model->getStructure()->willReturn($contract);
-        $contractValidator->validate($contract)->willReturn($violationCollection);
+        $contractValidator->validate($contract)->willReturn(
+            $violationCollection
+        );
 
         $this->validate($model);
     }
 
-    function it_also_validates_object(
-        Object $object,
+    function it_also_validates_objekt(
+        Objekt $objekt,
         ObjectValidator $objectValidator,
         File $model
-    )
-    {
+    ) {
         $violationCollection = new ViolationCollection();
 
-        $model->getStructure()->willReturn($object);
-        $objectValidator->validate($object)->willReturn($violationCollection);
+        $model->getStructure()->willReturn($objekt);
+        $objectValidator->validate($objekt)->willReturn($violationCollection);
 
         $this->validate($model);
     }

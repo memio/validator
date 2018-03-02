@@ -16,14 +16,8 @@ use Memio\Validator\Violation\SomeViolation;
 
 class ViolationCollection
 {
-    /**
-     * @var array
-     */
-    private $violations = array();
+    private $violations = [];
 
-    /**
-     * @param Violation $violation
-     */
     public function add(Violation $violation)
     {
         if ($violation instanceof SomeViolation) {
@@ -31,12 +25,12 @@ class ViolationCollection
         }
     }
 
-    /**
-     * @param ViolationCollection $violationCollection
-     */
     public function merge(ViolationCollection $violationCollection)
     {
-        $this->violations = array_merge($this->violations, $violationCollection->violations);
+        $this->violations = array_merge(
+            $this->violations,
+            $violationCollection->violations
+        );
     }
 
     /**

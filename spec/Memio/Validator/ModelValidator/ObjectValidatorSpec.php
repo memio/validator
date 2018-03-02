@@ -12,25 +12,28 @@
 namespace spec\Memio\Validator\ModelValidator;
 
 use Memio\Validator\ViolationCollection;
+use Memio\Validator\ModelValidator;
 use Memio\Validator\ModelValidator\CollectionValidator;
 use Memio\Validator\ModelValidator\MethodValidator;
-use Memio\Model\Object;
+use Memio\Model\Objekt;
 use Memio\Model\Method;
 use PhpSpec\ObjectBehavior;
 
 class ObjectValidatorSpec extends ObjectBehavior
 {
-    function let(CollectionValidator $collectionValidator, MethodValidator $methodValidator)
-    {
+    function let(
+        CollectionValidator $collectionValidator,
+        MethodValidator $methodValidator
+    ) {
         $this->beConstructedWith($collectionValidator, $methodValidator);
     }
 
     function it_is_a_model_validator()
     {
-        $this->shouldImplement('Memio\Validator\ModelValidator');
+        $this->shouldImplement(ModelValidator::class);
     }
 
-    function it_supports_objects(Object $model)
+    function it_supports_objects(Objekt $model)
     {
         $this->supports($model)->shouldBe(true);
     }
@@ -38,14 +41,13 @@ class ObjectValidatorSpec extends ObjectBehavior
     function it_also_validates_methods(
         CollectionValidator $collectionValidator,
         MethodValidator $methodValidator,
-        Object $model,
+        Objekt $model,
         Method $method
-    )
-    {
-        $constants = array();
-        $contracts = array();
-        $methods = array($method);
-        $properties = array();
+    ) {
+        $constants = [];
+        $contracts = [];
+        $methods = [$method];
+        $properties = [];
         $violationCollection1 = new ViolationCollection();
         $violationCollection2 = new ViolationCollection();
         $violationCollection3 = new ViolationCollection();

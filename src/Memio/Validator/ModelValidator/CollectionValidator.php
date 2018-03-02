@@ -22,9 +22,6 @@ use Memio\Validator\ViolationCollection;
 
 class CollectionValidator implements ModelValidator
 {
-    /**
-     * @var ConstraintValidator
-     */
     private $constraintValidator;
 
     public function __construct()
@@ -32,34 +29,25 @@ class CollectionValidator implements ModelValidator
         $this->constraintValidator = new ConstraintValidator();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function add(Constraint $constraint)
     {
         $this->constraintValidator->add($constraint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function supports($model)
+    public function supports($model): bool
     {
         if (!is_array($model) || empty($model)) {
             return false;
         }
         $firstElement = current($model);
 
-        return (
+        return
             $firstElement instanceof Argument || $firstElement instanceof Constant
             || $firstElement instanceof Method || $firstElement instanceof Property
-        );
+        ;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($model)
+    public function validate($model): ViolationCollection
     {
         if (!$this->supports($model)) {
             return new ViolationCollection();

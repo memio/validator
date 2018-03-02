@@ -19,9 +19,6 @@ use Memio\Validator\ViolationCollection;
 
 class ArgumentValidator implements ModelValidator
 {
-    /**
-     * @var ConstraintValidator
-     */
     private $constraintValidator;
 
     public function __construct()
@@ -29,26 +26,17 @@ class ArgumentValidator implements ModelValidator
         $this->constraintValidator = new ConstraintValidator();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function add(Constraint $constraint)
     {
         $this->constraintValidator->add($constraint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function supports($model)
+    public function supports($model): bool
     {
         return $model instanceof Argument;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($model)
+    public function validate($model): ViolationCollection
     {
         if (!$this->supports($model)) {
             return new ViolationCollection();

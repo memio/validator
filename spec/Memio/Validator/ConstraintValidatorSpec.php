@@ -12,11 +12,10 @@
 namespace spec\Memio\Validator;
 
 use Memio\Model\Argument;
-use Memio\Exception\ConstraintFailedException;
+use Memio\Validator\Exception\InvalidModelException;
 use Memio\Validator\Constraint;
 use Memio\Validator\Violation\NoneViolation;
 use Memio\Validator\Violation\SomeViolation;
-use Memio\Validator\Violation\ManyViolations;
 use PhpSpec\ObjectBehavior;
 
 class ConstraintValidatorSpec extends ObjectBehavior
@@ -24,8 +23,10 @@ class ConstraintValidatorSpec extends ObjectBehavior
     const FIRST_VIOLATION = 'Model is invalid';
     const SECOND_VIOLATION = 'Model is even more invalid';
 
-    function let(Constraint $firstConstraint, Constraint $secondConstraint)
-    {
+    function let(
+        Constraint $firstConstraint,
+        Constraint $secondConstraint
+    ) {
         $this->add($firstConstraint);
         $this->add($secondConstraint);
     }
@@ -36,8 +37,7 @@ class ConstraintValidatorSpec extends ObjectBehavior
         Constraint $secondConstraint,
         NoneViolation $noneViolation1,
         NoneViolation $noneViolation2
-    )
-    {
+    ) {
         $firstConstraint->validate($model)->willReturn($noneViolation1);
         $secondConstraint->validate($model)->willReturn($noneViolation2);
 
@@ -50,13 +50,13 @@ class ConstraintValidatorSpec extends ObjectBehavior
         Constraint $secondConstraint,
         NoneViolation $noneViolation,
         SomeViolation $someViolation
-    )
-    {
+    ) {
         $someViolation->getMessage()->willReturn(self::FIRST_VIOLATION);
         $firstConstraint->validate($model)->willReturn($noneViolation);
         $secondConstraint->validate($model)->willReturn($someViolation);
 
-        $invalidModelException = 'Memio\Validator\Exception\InvalidModelException';
-        $this->validate($model)->shouldThrow($invalidModelException)->duringRaise();
+        $this->validate($model)->shouldThrow(
+            InvalidModelException::class
+        )->duringRaise();
     }
 }

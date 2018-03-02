@@ -15,10 +15,7 @@ use Memio\Validator\Violation;
 
 class NoneViolation implements Violation
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function getMessage()
+    public function getMessage(): string
     {
         return '';
     }

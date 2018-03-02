@@ -11,7 +11,7 @@
 
 namespace Memio\Validator\ModelValidator;
 
-use Memio\Model\Object;
+use Memio\Model\Objekt;
 use Memio\Validator\Constraint;
 use Memio\Validator\ConstraintValidator;
 use Memio\Validator\ModelValidator;
@@ -19,25 +19,10 @@ use Memio\Validator\ViolationCollection;
 
 class ObjectValidator implements ModelValidator
 {
-    /**
-     * @var CollectionValidator
-     */
     private $collectionValidator;
-
-    /**
-     * @var ConstraintValidator
-     */
     private $constraintValidator;
-
-    /**
-     * @var MethodValidator
-     */
     private $methodValidator;
 
-    /**
-     * @param CollectionValidator $collectionValidator
-     * @param MethodValidator     $methodValidator
-     */
     public function __construct(
         CollectionValidator $collectionValidator,
         MethodValidator $methodValidator
@@ -48,26 +33,17 @@ class ObjectValidator implements ModelValidator
         $this->constraintValidator = new ConstraintValidator();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function add(Constraint $constraint)
     {
         $this->constraintValidator->add($constraint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function supports($model)
+    public function supports($model): bool
     {
-        return $model instanceof Object;
+        return $model instanceof Objekt;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function validate($model)
+    public function validate($model): ViolationCollection
     {
         if (!$this->supports($model)) {
             return new ViolationCollection();
