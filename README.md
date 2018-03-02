@@ -11,7 +11,7 @@ A validator library for Memio: allows to define `Constraints` to check if the bu
 
 Install it using [Composer](https://getcomposer.org/download):
 
-    composer require memio/validator:^2.0@alpha
+    composer require memio/validator:^2.0
 
 ## Example
 
@@ -24,10 +24,8 @@ the first thing we'll need to do is to write a `Constraint`:
 require __DIR__.'/vendor/autoload.php';
 
 use Memio\Validator\Constraint;
-use Memio\Validator\Violation\{
-    NoneViolation,
-    SomeViolation
-};
+use Memio\Validator\Violation\NoneViolation;
+use Memio\Validator\Violation\SomeViolation;
 
 class ArgumentCannotBeScalar implements Constraint
 {
