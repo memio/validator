@@ -15,7 +15,7 @@ use Memio\Validator\Violation;
 
 class NoneViolation implements Violation
 {
-    public function getMessage() : string
+    public function getMessage(): string
     {
         return '';
     }

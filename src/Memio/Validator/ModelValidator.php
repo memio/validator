@@ -14,6 +14,8 @@ namespace Memio\Validator;
 interface ModelValidator
 {
     public function add(Constraint $constraint);
-    public function supports($model) : bool;
-    public function validate($model) : ViolationCollection;
+
+    public function supports($model): bool;
+
+    public function validate($model): ViolationCollection;
 }

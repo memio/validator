@@ -34,7 +34,7 @@ class CollectionValidator implements ModelValidator
         $this->constraintValidator->add($constraint);
     }
 
-    public function supports($model) : bool
+    public function supports($model): bool
     {
         if (!is_array($model) || empty($model)) {
             return false;
@@ -47,7 +47,7 @@ class CollectionValidator implements ModelValidator
         ;
     }
 
-    public function validate($model) : ViolationCollection
+    public function validate($model): ViolationCollection
     {
         if (!$this->supports($model)) {
             return new ViolationCollection();

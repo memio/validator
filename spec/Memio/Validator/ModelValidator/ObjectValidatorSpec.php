@@ -15,7 +15,7 @@ use Memio\Validator\ViolationCollection;
 use Memio\Validator\ModelValidator;
 use Memio\Validator\ModelValidator\CollectionValidator;
 use Memio\Validator\ModelValidator\MethodValidator;
-use Memio\Model\Object;
+use Memio\Model\Objekt;
 use Memio\Model\Method;
 use PhpSpec\ObjectBehavior;
 
@@ -33,7 +33,7 @@ class ObjectValidatorSpec extends ObjectBehavior
         $this->shouldImplement(ModelValidator::class);
     }
 
-    function it_supports_objects(Object $model)
+    function it_supports_objects(Objekt $model)
     {
         $this->supports($model)->shouldBe(true);
     }
@@ -41,7 +41,7 @@ class ObjectValidatorSpec extends ObjectBehavior
     function it_also_validates_methods(
         CollectionValidator $collectionValidator,
         MethodValidator $methodValidator,
-        Object $model,
+        Objekt $model,
         Method $method
     ) {
         $constants = [];

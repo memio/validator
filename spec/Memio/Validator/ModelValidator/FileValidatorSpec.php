@@ -13,7 +13,7 @@ namespace spec\Memio\Validator\ModelValidator;
 
 use Memio\Model\Contract;
 use Memio\Model\File;
-use Memio\Model\Object;
+use Memio\Model\Objekt;
 use Memio\Validator\ModelValidator;
 use Memio\Validator\ModelValidator\ContractValidator;
 use Memio\Validator\ModelValidator\ObjectValidator;
@@ -54,15 +54,15 @@ class FileValidatorSpec extends ObjectBehavior
         $this->validate($model);
     }
 
-    function it_also_validates_object(
-        Object $object,
+    function it_also_validates_objekt(
+        Objekt $objekt,
         ObjectValidator $objectValidator,
         File $model
     ) {
         $violationCollection = new ViolationCollection();
 
-        $model->getStructure()->willReturn($object);
-        $objectValidator->validate($object)->willReturn($violationCollection);
+        $model->getStructure()->willReturn($objekt);
+        $objectValidator->validate($objekt)->willReturn($violationCollection);
 
         $this->validate($model);
     }

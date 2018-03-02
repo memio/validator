@@ -20,7 +20,7 @@ class ConstraintValidator
         $this->constraints[] = $constraint;
     }
 
-    public function validate($model) : ViolationCollection
+    public function validate($model): ViolationCollection
     {
         $violationCollection = new ViolationCollection();
         foreach ($this->constraints as $constraint) {

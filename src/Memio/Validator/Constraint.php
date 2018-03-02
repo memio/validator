@@ -13,5 +13,5 @@ namespace Memio\Validator;
 
 interface Constraint
 {
-    public function validate($model) : Violation;
+    public function validate($model): Violation;
 }

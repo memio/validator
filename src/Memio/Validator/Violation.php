@@ -13,5 +13,5 @@ namespace Memio\Validator;
 
 interface Violation
 {
-    public function getMessage() : string;
+    public function getMessage(): string;
 }

@@ -38,12 +38,12 @@ class ContractValidator implements ModelValidator
         $this->constraintValidator->add($constraint);
     }
 
-    public function supports($model) : bool
+    public function supports($model): bool
     {
         return $model instanceof Contract;
     }
 
-    public function validate($model) : ViolationCollection
+    public function validate($model): ViolationCollection
     {
         if (!$this->supports($model)) {
             return new ViolationCollection();

@@ -22,7 +22,7 @@ class SomeViolation implements Violation
         $this->message = $message;
     }
 
-    public function getMessage() : string
+    public function getMessage(): string
     {
         return $this->message;
     }
