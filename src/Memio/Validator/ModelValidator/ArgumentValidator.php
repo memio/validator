@@ -26,7 +26,7 @@ class ArgumentValidator implements ModelValidator
         $this->constraintValidator = new ConstraintValidator();
     }
 
-    public function add(Constraint $constraint)
+    public function add(Constraint $constraint): void
     {
         $this->constraintValidator->add($constraint);
     }

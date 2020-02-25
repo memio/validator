@@ -33,7 +33,7 @@ class ContractValidator implements ModelValidator
         $this->constraintValidator = new ConstraintValidator();
     }
 
-    public function add(Constraint $constraint)
+    public function add(Constraint $constraint): void
     {
         $this->constraintValidator->add($constraint);
     }
@@ -49,9 +49,9 @@ class ContractValidator implements ModelValidator
             return new ViolationCollection();
         }
         $violationCollection = $this->constraintValidator->validate($model);
-        $violationCollection->merge($this->collectionValidator->validate($model->allConstants()));
-        $violationCollection->merge($this->collectionValidator->validate($model->allContracts()));
-        $methods = $model->allMethods();
+        $violationCollection->merge($this->collectionValidator->validate($model->constants));
+        $violationCollection->merge($this->collectionValidator->validate($model->contracts));
+        $methods = $model->methods;
         $violationCollection->merge($this->collectionValidator->validate($methods));
         foreach ($methods as $method) {
             $violationCollection->merge($this->methodValidator->validate($method));

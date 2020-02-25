@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 3.0.0: PHP 7.2 requirement
+
+Dropped support for PHP <7.2
+
+Other upgrades:
+
+* upgraded PHP CS Fixer (from 2.10 to 2.16)
+* upgraded phpspec (from 4.3 to 6.1)
+
 ## 2.0.0-alpha1, 2.0.0-alpha2: PHP 7
 
 * dropped support for PHP < 7

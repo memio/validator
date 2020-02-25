@@ -12,10 +12,10 @@
 namespace spec\Memio\Validator\ModelValidator;
 
 use Memio\Model\Method;
-use Memio\Validator\ViolationCollection;
 use Memio\Validator\ModelValidator;
 use Memio\Validator\ModelValidator\ArgumentValidator;
 use Memio\Validator\ModelValidator\CollectionValidator;
+use Memio\Validator\ViolationCollection;
 use PhpSpec\ObjectBehavior;
 
 class MethodValidatorSpec extends ObjectBehavior
@@ -46,8 +46,6 @@ class MethodValidatorSpec extends ObjectBehavior
         $violationCollection1 = new ViolationCollection();
         $violationCollection2 = new ViolationCollection();
 
-        $model->isAbstract()->willReturn(false);
-        $model->allArguments()->willReturn($arguments);
         $collectionValidator->validate($arguments)->willReturn(
             $violationCollection1
         );

@@ -33,7 +33,7 @@ class MethodValidator implements ModelValidator
         $this->constraintValidator = new ConstraintValidator();
     }
 
-    public function add(Constraint $constraint)
+    public function add(Constraint $constraint): void
     {
         $this->constraintValidator->add($constraint);
     }
@@ -49,7 +49,7 @@ class MethodValidator implements ModelValidator
             return new ViolationCollection();
         }
         $violationCollection = $this->constraintValidator->validate($model);
-        $arguments = $model->allArguments();
+        $arguments = $model->arguments;
         $violationCollection->merge($this->collectionValidator->validate($arguments));
         foreach ($arguments as $argument) {
             $violationCollection->merge($this->argumentValidator->validate($argument));

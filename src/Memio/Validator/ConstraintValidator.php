@@ -15,7 +15,7 @@ class ConstraintValidator
 {
     private $constraints = [];
 
-    public function add(Constraint $constraint)
+    public function add(Constraint $constraint): void
     {
         $this->constraints[] = $constraint;
     }

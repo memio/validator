@@ -46,7 +46,6 @@ class FileValidatorSpec extends ObjectBehavior
     ) {
         $violationCollection = new ViolationCollection();
 
-        $model->getStructure()->willReturn($contract);
         $contractValidator->validate($contract)->willReturn(
             $violationCollection
         );
@@ -61,7 +60,6 @@ class FileValidatorSpec extends ObjectBehavior
     ) {
         $violationCollection = new ViolationCollection();
 
-        $model->getStructure()->willReturn($objekt);
         $objectValidator->validate($objekt)->willReturn($violationCollection);
 
         $this->validate($model);

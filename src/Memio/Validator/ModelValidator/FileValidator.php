@@ -34,7 +34,7 @@ class FileValidator implements ModelValidator
         $this->constraintValidator = new ConstraintValidator();
     }
 
-    public function add(Constraint $constraint)
+    public function add(Constraint $constraint): void
     {
         $this->constraintValidator->add($constraint);
     }
@@ -50,7 +50,7 @@ class FileValidator implements ModelValidator
             return new ViolationCollection();
         }
         $violationCollection = $this->constraintValidator->validate($model);
-        $structure = $model->getStructure();
+        $structure = $model->structure;
         if ($structure instanceof Contract) {
             $violationCollection->merge($this->contractValidator->validate($structure));
         }
