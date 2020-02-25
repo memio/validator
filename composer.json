@@ -17,11 +17,11 @@
         "Memio\\Validator\\": "src/Memio/Validator"
     }},
     "require": {
-        "php": "^7.0",
-        "memio/model": "^2.0"
+        "php": "^7.2",
+        "memio/model": "^3.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.10",
-        "phpspec/phpspec": "^4.3"
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpspec/phpspec": "^6.1"
     }
 }

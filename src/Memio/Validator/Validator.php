@@ -17,7 +17,7 @@ class Validator
 {
     private $modelValidators = [];
 
-    public function add(ModelValidator $modelValidator)
+    public function add(ModelValidator $modelValidator): void
     {
         $this->modelValidators[] = $modelValidator;
     }

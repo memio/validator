@@ -18,14 +18,14 @@ class ViolationCollection
 {
     private $violations = [];
 
-    public function add(Violation $violation)
+    public function add(Violation $violation): void
     {
         if ($violation instanceof SomeViolation) {
             $this->violations[] = $violation->getMessage();
         }
     }
 
-    public function merge(ViolationCollection $violationCollection)
+    public function merge(ViolationCollection $violationCollection): void
     {
         $this->violations = array_merge(
             $this->violations,

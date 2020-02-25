@@ -12,9 +12,9 @@
 namespace spec\Memio\Validator;
 
 use Memio\Validator\Exception\InvalidModelException;
-use Memio\Validator\ViolationCollection;
 use Memio\Validator\Violation\NoneViolation;
 use Memio\Validator\Violation\SomeViolation;
+use Memio\Validator\ViolationCollection;
 use PhpSpec\ObjectBehavior;
 
 class ViolationCollectionSpec extends ObjectBehavior

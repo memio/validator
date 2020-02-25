@@ -12,8 +12,8 @@
 namespace spec\Memio\Validator;
 
 use Memio\Model\Argument;
-use Memio\Validator\Exception\InvalidModelException;
 use Memio\Validator\Constraint;
+use Memio\Validator\Exception\InvalidModelException;
 use Memio\Validator\Violation\NoneViolation;
 use Memio\Validator\Violation\SomeViolation;
 use PhpSpec\ObjectBehavior;

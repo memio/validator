@@ -11,12 +11,12 @@
 
 namespace spec\Memio\Validator\ModelValidator;
 
-use Memio\Validator\ViolationCollection;
+use Memio\Model\Method;
+use Memio\Model\Objekt;
 use Memio\Validator\ModelValidator;
 use Memio\Validator\ModelValidator\CollectionValidator;
 use Memio\Validator\ModelValidator\MethodValidator;
-use Memio\Model\Objekt;
-use Memio\Model\Method;
+use Memio\Validator\ViolationCollection;
 use PhpSpec\ObjectBehavior;
 
 class ObjectValidatorSpec extends ObjectBehavior
@@ -55,11 +55,6 @@ class ObjectValidatorSpec extends ObjectBehavior
         $violationCollection5 = new ViolationCollection();
 
         $model->getName()->willReturn('Symfony\Component\HttpKernel\HttpKernelInterface');
-        $model->isAbstract()->willReturn(true);
-        $model->allConstants()->willReturn($constants);
-        $model->allContracts()->willReturn($contracts);
-        $model->allMethods()->willReturn($methods);
-        $model->allProperties()->willReturn($properties);
         $collectionValidator->validate($constants)->willReturn($violationCollection1);
         $collectionValidator->validate($contracts)->willReturn($violationCollection2);
         $collectionValidator->validate($properties)->willReturn($violationCollection3);
