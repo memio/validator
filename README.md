@@ -1,4 +1,4 @@
-# Memio's Validator [![Travis CI](https://travis-ci.org/memio/validator.png)](https://travis-ci.org/memio/validator) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/e5794d5b-5305-4569-bc9b-caeecf9ae982/mini.png)](https://insight.sensiolabs.com/projects/e5794d5b-5305-4569-bc9b-caeecf9ae982)
+# Memio's Validator
 
 A validator library for Memio: allows to define `Constraints` to check if the built
 [Memio models](http://github.com/memio/model) are valid
@@ -11,7 +11,9 @@ A validator library for Memio: allows to define `Constraints` to check if the bu
 
 Install it using [Composer](https://getcomposer.org/download):
 
-    composer require memio/validator:^3.0
+```console
+$ composer require memio/validator:^3.0
+```
 
 ## Example
 
@@ -60,7 +62,7 @@ to check our `Constraint` against its `Arguments`. To do so, we need to assemble
 
 ```php
 // ...
-//
+
 $collectionValidator = new CollectionValidator();
 $methodValidator = new MethodValidator($argumentValidator, $collectionValidator);
 $contractValidator = new ContractValidator($collectionValidator, $methodValidator);
@@ -72,7 +74,7 @@ Finally, we need to create a validator and register our `ModelValidators` in it:
 
 ```php
 // ...
-//
+
 $myValidator = new Validator();
 $myValidator->add($argumentValidator);
 $myValidator->add($collectionValidator);
@@ -92,8 +94,10 @@ Have a look at [the main respository](http://github.com/memio/memio) to discover
 Memio uses [phpspec](http://phpspec.net/), which means the tests also provide the documentation.
 Not convinced? Then clone this repository and run the following commands:
 
-    composer install
-    ./vendor/bin/phpspec run -n -f pretty
+```console
+$ composer install -o
+$ ./vendor/bin/phpspec run -n -f pretty
+```
 
 You can see the current and past versions using one of the following:
 
