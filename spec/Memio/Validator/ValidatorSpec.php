@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace spec\Memio;
+namespace spec\Memio\Validator;
 
 use Memio\Model\Argument;
 use Memio\Validator\Exception\InvalidModelException;
