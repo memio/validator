@@ -21,6 +21,7 @@ use Memio\Validator\ViolationCollection;
 
 class FileValidator implements ModelValidator
 {
+    private $constraintValidator;
     private $contractValidator;
     private $objectValidator;
 
